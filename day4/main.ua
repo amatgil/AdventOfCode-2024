@@ -8,10 +8,8 @@ Input ← AoCGet 2024 4
 
 # ====== PART 1 ======
 F               ← |1 >0+⊃(>0⌕"XMAS"|>0⌕"SAMX")
-FilterTrueDiags ← (
-  ≡(⨬(@\s|∘))⊞≥.⇡⊸⧻ ⇌↻1
-)
-Diags ← |1 ⌅(≡(⌝⤸ 0_0 ≡↻) ⊃(⇡⧻|¤)|⍥₅₉Diags)
+Diags           ← |1 ⌅(≡(⌝⤸ 0_0 ≡↻) ⊃(⇡⧻|¤)|⍥₅₉Diags)
+FilterTrueDiags ← ≡(⨬(@\s|∘))⊞≥.⇡⊸⧻ ⇌↻1
 
 Part₁ ← (
   ⊜∘ ⊸(≠@\n)
