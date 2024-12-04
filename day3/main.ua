@@ -13,7 +13,7 @@ Part₁ ← /+/×⋕↘₁⍉ regex "mul\\((\\d+),(\\d+)\\)"
 IsConditional ← ⍜¤(/+⊞≍ {"do()" "don't()"})□
 ComputeMul    ← ×∩⋕°$"mul(_,_)"
 HandleMul     ← ⨬(◌|⊃(⋅∘|⊂⊙⋅∘)ComputeMul),
-HandleCond    ← ⨬(0◌|1◌)≍"do()"°□
+HandleCond    ← ⊙◌≍"do()"°□
 
 Part₂ ← (
   ⬚@ regex $ (mul\((\d+),(\d+)\)|do\(\)|don't\(\))
