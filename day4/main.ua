@@ -7,19 +7,25 @@ Input ← AoCGet 2024 4
 # ====== Shared ======
 
 # ====== PART 1 ======
-F               ← |1 >0+⊃(>0⌕"XMAS"|>0⌕"SAMX")
-Diags           ← |1 ⌅(≡(⌝⤸ 0_0 ≡↻) ⊃(⇡⧻|¤)|⍥₅₉Diags)
-FilterTrueDiags ← ≡(⨬(@\s|∘))⊞≥.⇡⊸⧻ ⇌↻1
+LowerTriangle ← ⊞≥ . (⇡⧻)
+UpperTriangle ← ⊞≤ . (⇡⧻)
+DiagsOf       ← ⌅(≡(⌝⤸0_0↻¯)⊃(⇡⧻|¤))
+FindWord      ← >0 +⊃(⌕"XMAS"|⌕⇌"XMAS")
+FilterBy      ← ∵⨬(@.|∘)
 
 Part₁ ← (
-  ⊜∘ ⊸(≠@\n)
-  ⊸(>0+++⊃(
-      ⍜⍉F                            # Vertical
-    | F                              # Horizontal
-    | ⍜(Diags|F FilterTrueDiags)     # Major Diags
-    | ⍜(Diags≡⇌|?F FilterTrueDiags?) # Minor Diags
-    ))
-  ⊃(◌≡(⨬(@.◌|∘)))(/+/+)
+  ⊸⊃(
+    ⍜(DiagsOf|FindWord FilterBy ⊸(UpperTriangle))
+  | ⍜(DiagsOf|FindWord FilterBy ⊸(LowerTriangle))
+  | ⍜(DiagsOf≡⇌|FindWord FilterBy ⊸(UpperTriangle))
+  | ⍜(DiagsOf≡⇌|FindWord FilterBy ⊸(LowerTriangle))
+  | FindWord
+  | ⍜⍉FindWord
+  )
+  # ∨∨∨∨∨
+  ↥↥↥↥↥
+  ⊃FilterBy(/+/+)
+  # ⊃(◌≡(⨬(@.◌|∘)))(/+/+)
 )
 
 # ====== PART 2 ======
