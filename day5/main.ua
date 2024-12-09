@@ -37,13 +37,23 @@ Part₁ ← (
 )
 
 # ====== PART 2 ======
+# Insertion sort = ∧(⍣(⍜⊙↘⊂ ⊃⋅⊙◌⊙⋅∘ ⊢⊚|⍜⊙⇌⊂◌) ◡> dip[]
+
+# ? A B Map
+GoesBefore ← ∈ ⍜⍉⊣ ▽ ⍜⍉⊢ ⊸= ⊃(⊙⋅⊙|⋅⊙⋅)
+
+# SortedSeq ? Seq Map
+Sort ← (
+  ⊙¤ :°⊂
+  ⊙◌∧(?⍣(⍜⊙↘⊂ ⊃⋅⊙◌⊙⋅∘ ⊢⊚|⍜⊙⇌⊂ ◌) ? ◡≡(¬GoesBefore?)?)
+)
+
 Part₂ ← (
   Parse
   ⊙(¤⍉)
   ⟜⊸≡(¬IsValid°□)
   ˜▽
-  ≡(⊡⌊÷2 ⊸⧻ °¤ ▽ ⤚≡(IsValid) ⧅≠ ⊸⧻ ⊙¤ °□)
-  /+
+  ≡(⊡⌊÷2 ⊸⧻ Sort ⊙¤ °□)
 )
 
 # ====== TESTS =======
